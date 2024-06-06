@@ -5,7 +5,7 @@ module half_adder_tb;
     wire s, c;
     reg a, b;
     
-    half_adder h1(a, b, s, c);
+    half_adder h1(s, c, a, b);
     initial begin
         $dumpfile("file.vcd");
         $dumpvars(0, half_adder_tb);
