@@ -1,4 +1,4 @@
-module regfile #(parameter N = 6,  M = 32, L = 32)
+module register_file #(parameter N = 6,  M = 32, L = 32)
                 (input clk,
                  input we3,
                  input [N-1:0] a1, a2, a3,
