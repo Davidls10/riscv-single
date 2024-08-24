@@ -1,6 +1,6 @@
-module ram #(parameter N = 8, M = 32)
+module data_memory #(parameter N = 8, M = 32)
             (input  clk,
-             input  we,
+             input  write_enable,
              input  [N-1:0] adr,
              input  [M-1:0] din,
              output [M-1:0] dout);
@@ -8,7 +8,7 @@ module ram #(parameter N = 8, M = 32)
     logic [M-1:0] mem [2**N-1:0];
 
     always @(posedge clk)
-        if (we) mem [adr] <= din;
+        if (write_enable) mem [adr] <= din;
 
     assign dout = mem[adr];
 endmodule
