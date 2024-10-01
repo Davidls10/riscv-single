@@ -1,11 +1,11 @@
 module main_decoder (input [7-1:0] opcode,
-                     output reg_write,
-                     output imm_src,
-                     output alu_src,
-                     output mem_write,
-                     output result_src,
-                     output branch,
-                     output alu_op,
+                     output reg reg_write,
+                     output reg imm_src,
+                     output reg alu_src,
+                     output reg mem_write,
+                     output reg result_src,
+                     output reg branch,
+                     output reg alu_op
                     );
 
     always @* begin
@@ -30,7 +30,7 @@ module main_decoder (input [7-1:0] opcode,
                     branch = 1'b0;
                     alu_op = 2'b00;
                 end
-            7'b0100011: // R-type
+            7'b0110011: // R-type
                 begin
                     reg_write = 1'b1;
                     imm_src = 2'bXX;
@@ -40,7 +40,7 @@ module main_decoder (input [7-1:0] opcode,
                     branch = 1'b0;
                     alu_op = 2'b10;
                 end
-            7'b0100011: // beq
+            7'b1100011: // beq
                 begin
                     reg_write = 1'b0;
                     imm_src = 2'b10;

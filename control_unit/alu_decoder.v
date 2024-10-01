@@ -1,4 +1,4 @@
-module alu_decoder (output [3-1:0] alu_control,
+module alu_decoder (output reg [3-1:0] alu_control,
                     input [2-1:0] alu_op,
                     input [3-1:0] funct3,
                     input [2-1:0] funct7);
