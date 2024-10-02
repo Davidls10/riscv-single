@@ -57,7 +57,7 @@ module processor(output pc_out, alu_result,
     */
     extend ext(.imm_ext(ImmExt), .imm_src(ImmSrc), .instr(instruction[31:7]));
 
-    pc_target = pc_current + imm_ext;
+    assign pc_target = pc_current + ImmExt;
 
     wire reg_read_addr_1 = instruction[19:15];
     wire reg_read_addr_2 = instruction[24:20];
@@ -77,5 +77,5 @@ module processor(output pc_out, alu_result,
     // Data Memory
     data_memory data_mem (.clk(clk), .write_enable(MemWrite), .adr(ALUResult), .din(reg_read_data_2), .dout(ReadData));
 
-    result = (ResultSrc == 1'b0) ? ALUResult : ReadData;
+    assign result = (ResultSrc == 1'b0) ? ALUResult : ReadData;
 endmodule

@@ -5,7 +5,7 @@ module register_file #(parameter N = 6,  M = 32, L = 32)
                  input [M-1:0] wd3,
                  output [M-1:0] rd1, rd2);
 
-    [M-1:0] rf [L-1:0];
+    reg [M-1:0] rf [L-1:0];
 
     always @(posedge clk)
         if (we3) rf[a3] <= wd3;

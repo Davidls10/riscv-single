@@ -1,5 +1,5 @@
 module instruction_memory(input wire [15:0] pc,
-                          output wire [31:0] instr);
+                          output reg [31:0] instr);
 
     /*
     L7: lw x6, -4(x9)        I   111111111100 01001 010 00110 0000011

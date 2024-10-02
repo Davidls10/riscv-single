@@ -1,4 +1,4 @@
-module extend(output wire [31:0] imm_ext,
+module extend(output reg [31:0] imm_ext,
               input wire [1:0] imm_src,
               input wire [31:7] instr);
 

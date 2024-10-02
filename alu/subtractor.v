@@ -1,6 +1,6 @@
 module subtractor #(parameter N = 8)
-                   (input logic [N-1:0] a, b,
-                    output logic [N-1:0] y)
+                   (output wire [N-1:0] y,
+                    input [N-1:0] a, b);
     
     assign y = a - b;
 endmodule
