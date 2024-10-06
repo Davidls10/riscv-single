@@ -1,4 +1,4 @@
-module instruction_memory(input wire [15:0] pc,
+module instruction_memory(input wire [31:0] pc,
                           output reg [31:0] instr);
 
     /*
@@ -10,10 +10,10 @@ module instruction_memory(input wire [15:0] pc,
 
     always @* begin
         case(pc)
-            16'h00: instr = 32'b11111111110001001010001100000011;
-            16'h04: instr = 32'b00000000011001001010010000100011;
-            16'h08: instr = 32'b00000000011000101110001000110011;
-            16'h0c: instr = 32'b11111110010000100000101011100011;
+            16'h0000: instr = 32'b11111111110001001010001100000011;
+            16'h0004: instr = 32'b00000000011001001010010000100011;
+            16'h0008: instr = 32'b00000000011000101110001000110011;
+            16'h000c: instr = 32'b11111110010000100000101011100011;
         endcase
     end
     

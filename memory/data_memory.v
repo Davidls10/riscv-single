@@ -1,11 +1,14 @@
-module data_memory #(parameter N = 8, M = 32)
+module data_memory #(parameter N = 32, M = 32)
             (input  clk,
              input  write_enable,
              input  [N-1:0] adr,
              input  [M-1:0] din,
              output [M-1:0] dout);
 
-    logic [M-1:0] mem [2**N-1:0];
+    reg [M-1:0] mem [2**N-1:0];
+
+    initial
+        mem[32'h00] = 32'd32;
 
     always @(posedge clk)
         if (write_enable) mem [adr] <= din;

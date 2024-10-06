@@ -1,11 +1,11 @@
 module main_decoder (input [7-1:0] opcode,
                      output reg reg_write,
-                     output reg imm_src,
+                     output reg [2-1:0] imm_src,
                      output reg alu_src,
                      output reg mem_write,
                      output reg result_src,
                      output reg branch,
-                     output reg alu_op
+                     output reg [2-1:0] alu_op
                     );
 
     always @* begin
