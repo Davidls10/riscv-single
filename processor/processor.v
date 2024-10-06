@@ -6,6 +6,9 @@
 `include "../alu/alu32.v"
 `include "../memory/data_memory.v"
 
+/**
+* This is the top-level block of the RISC-V partial implementation. 
+*/
 module processor(output pc_out, alu_result,
                  input clk, reset
                 );
@@ -39,7 +42,7 @@ module processor(output pc_out, alu_result,
 
     // instruction memory
     /**
-    * The instruction memory contains the instructions of the program that will run
+    * The instruction memory contains the instructions of the program that will run.
     */
     instruction_memory instr_mem(.pc(pc_current), .instr(instruction));
 
@@ -47,6 +50,10 @@ module processor(output pc_out, alu_result,
     wire [1:0] ALUOp;
 
     // control unit
+    /**
+    * The control unit aims to control the signals of the computer to achieve a result
+    * based on the current instruction.
+    */
     main_decoder main_dec(.opcode(instruction[6:0]), .reg_write(RegWrite), 
                           .imm_src(ImmSrc), .alu_src(AluSrc), 
                           .mem_write(MemWrite), .result_src(ResultSrc), 
@@ -60,7 +67,7 @@ module processor(output pc_out, alu_result,
 
     // extend unit
     /**
-    * The extend unit extends the signal or add zeros
+    * The extend unit extends the signal of a number or add zeros to it.
     */
 
     wire [32-1:0] ImmExt;
@@ -78,6 +85,11 @@ module processor(output pc_out, alu_result,
     wire [32-1:0] ReadData;
 
     // operations on register file
+    /**
+    * The register file contains the registers of the processor;
+    * it needs a clock, a write enable signal, the address from which
+    * read data and where write data when enabled.
+    */
     register_file reg_file(.clk(clk), .we(we),
                            .a1(reg_read_addr_1), .a2(reg_read_addr_2), 
                            .a3(reg_write_addr), .wd3(reg_write_data),
@@ -85,13 +97,22 @@ module processor(output pc_out, alu_result,
 
 
     // ALU
+    /**
+    * The ALU is the part of the computer that do arithmetic and logic operations.
+    */
     alu32 alu1 (.ALUResult(ALUResult), .zero_flag(zero_flag), .SrcA(reg_read_data_1),
                .SrcB((AluSrc == 1'b0) ? reg_read_data_2 : ImmExt), .ALUControl(ALUControl));
 
+    // If there is a condition to branch, the next PC value must be to the 
+    //instruction memory address appointed by the branching instruction.
     assign pc_next = (zero_flag && Branch) ? pc_target : pc_plus_4; 
 
     // Data Memory
-    data_memory data_mem (.clk(clk), .write_enable(MemWrite), .adr(ALUResult), .din(reg_read_data_2), .dout(ReadData));
+    /**
+    * This is the main memory of the computer.
+    */
+    data_memory data_mem (.clk(clk), .write_enable(MemWrite), 
+                          .adr(ALUResult), .din(reg_read_data_2), .dout(ReadData));
 
     assign result = (ResultSrc == 1'b0) ? ALUResult : ReadData;
 
