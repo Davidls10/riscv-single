@@ -36,7 +36,7 @@ module processor(output pc_out, alu_result,
         $display($time, " PC = %d  alu_out = %d  pc_plus_4 = %d  pc_target = %x", pc_current, alu_out, pc_plus_4, pc_target);
         $display("Branch = %d  zero = %d  AluSrc = %d", Branch, zero_flag, AluSrc);
         $display("reg_read_data_1 = %d, reg_read_data_2 = %d, ImmExt = %x", reg_read_data_1, reg_read_data_2, ImmExt);
-        $display("ReadData = %d, reg_write_addr = %d, reg_write_data = %d\n\n", ReadData, reg_write_addr, reg_write_data);
+        $display("ReadData = %d, reg_read_addr_2 = %d, reg_write_addr = %d, reg_write_data = %d\n\n", ReadData, reg_read_addr_2, reg_write_addr, reg_write_data);
     end
     
     // program counter + 4
