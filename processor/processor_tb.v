@@ -26,6 +26,15 @@ module processor_tb;
         #5 clk = ~clk;
         #5 clk = ~clk;
         #5 clk = ~clk;
+        #5 clk = ~clk;
+        #5 clk = ~clk;
+        #5 clk = ~clk;
+        #5 clk = ~clk;
+        #5 clk = ~clk;
+        #5 clk = ~clk;
+        #5 clk = ~clk;
+        #5 clk = ~clk;
+        #5 clk = ~clk;
     end
     
 endmodule

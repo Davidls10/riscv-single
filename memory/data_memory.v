@@ -8,7 +8,7 @@ module data_memory #(parameter N = 32, M = 32)
     reg [M-1:0] mem [2**N-1:0];
 
     initial
-        mem[32'h00] = 32'd32;
+        mem[32'h00] = 32'd10;
 
     always @(posedge clk)
         if (write_enable) mem [adr] <= din;

@@ -10,10 +10,11 @@ module register_file #(parameter N = 5,  M = 32, L = 32)
     initial begin
         rf[9] = 32'h04;
         rf[4] = 32'd14;
+        rf[5] = 32'd5;
     end
 
     always @(posedge clk)
-        if (we) rf[a3] <= wd3;
+            if (we) begin rf[a3] = wd3; $display("Ici"); end
 
     assign rd1 = (a1 != 0) ? rf[a1] : 0;
     assign rd2 = (a2 != 0) ? rf[a2] : 0;

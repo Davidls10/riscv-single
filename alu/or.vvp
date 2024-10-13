@@ -1,0 +1,78 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000025ce4debb80 .scope module, "orN_tb" "orN_tb" 2 3;
+ .timescale 0 0;
+v0000025ce4ce58b0_0 .var "a", 7 0;
+v0000025ce4ce5950_0 .var "b", 7 0;
+v0000025ce4ce59f0_0 .net "f", 7 0, L_0000025ce4ce5a90;  1 drivers
+S_0000025ce4ce5680 .scope module, "or1" "orN" 2 7, 3 1 0, S_0000025ce4debb80;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 8 "f";
+    .port_info 1 /INPUT 8 "a";
+    .port_info 2 /INPUT 8 "b";
+P_0000025ce4de9b70 .param/l "N" 0 3 1, +C4<00000000000000000000000000001000>;
+L_0000025ce4ce5a90 .functor OR 8, v0000025ce4ce58b0_0, v0000025ce4ce5950_0, C4<00000000>, C4<00000000>;
+v0000025ce4de9250_0 .net "a", 7 0, v0000025ce4ce58b0_0;  1 drivers
+v0000025ce4de6820_0 .net "b", 7 0, v0000025ce4ce5950_0;  1 drivers
+v0000025ce4ce5810_0 .net "f", 7 0, L_0000025ce4ce5a90;  alias, 1 drivers
+    .scope S_0000025ce4debb80;
+T_0 ;
+    %vpi_call 2 9 "$dumpfile", "file.vcd" {0 0 0};
+    %vpi_call 2 10 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000025ce4debb80 {0 0 0};
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v0000025ce4ce58b0_0, 0, 8;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v0000025ce4ce5950_0, 0, 8;
+    %delay 5, 0;
+    %load/vec4 v0000025ce4ce59f0_0;
+    %cmpi/ne 0, 0, 8;
+    %jmp/0xz  T_0.0, 6;
+    %vpi_call 2 12 "$display", "0b00000000 | 0b00000000 failed!" {0 0 0};
+T_0.0 ;
+    %pushi/vec4 15, 0, 8;
+    %store/vec4 v0000025ce4ce58b0_0, 0, 8;
+    %pushi/vec4 90, 0, 8;
+    %store/vec4 v0000025ce4ce5950_0, 0, 8;
+    %delay 5, 0;
+    %load/vec4 v0000025ce4ce59f0_0;
+    %cmpi/ne 95, 0, 8;
+    %jmp/0xz  T_0.2, 6;
+    %vpi_call 2 14 "$display", "0b00001111 | 0b01011010 failed!" {0 0 0};
+T_0.2 ;
+    %pushi/vec4 255, 0, 8;
+    %store/vec4 v0000025ce4ce58b0_0, 0, 8;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v0000025ce4ce5950_0, 0, 8;
+    %delay 5, 0;
+    %load/vec4 v0000025ce4ce59f0_0;
+    %cmpi/ne 255, 0, 8;
+    %jmp/0xz  T_0.4, 6;
+    %vpi_call 2 16 "$display", "0b11111111 | 0b00000000 failed!" {0 0 0};
+T_0.4 ;
+    %pushi/vec4 1, 0, 8;
+    %store/vec4 v0000025ce4ce58b0_0, 0, 8;
+    %pushi/vec4 1, 0, 8;
+    %store/vec4 v0000025ce4ce5950_0, 0, 8;
+    %delay 5, 0;
+    %load/vec4 v0000025ce4ce59f0_0;
+    %cmpi/ne 1, 0, 8;
+    %jmp/0xz  T_0.6, 6;
+    %vpi_call 2 18 "$display", "0b00000001 | 0b00000001 failed!" {0 0 0};
+T_0.6 ;
+    %delay 5, 0;
+    %vpi_call 2 19 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "or_tb.v";
+    "./orN.v";
